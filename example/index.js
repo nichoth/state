@@ -1,4 +1,5 @@
 var Store = require('../')
+var xtend = require('xtend')
 var assert = require('assert')
 
 // you need to implement _state
@@ -57,7 +58,7 @@ var merged = Store.Merge({
     bar: barStore
 })
 
-merged.state(function onChange (state) {
+var unlisten = merged.state(function onChange (state) {
     console.log('merged', state)
     assert.deepEqual(state, {
         foo: { foo: 'aaaaa' },
@@ -66,4 +67,23 @@ merged.state(function onChange (state) {
 })
 
 fooStore.setFoo('aaaaa')
+
+unlisten()
+
+
+// -------- map -------------
+
+var mapped = Store.map(function (state) {
+    return xtend(state, {
+        woo: 'woo'
+    })
+}, fooStore)
+
+mapped.state(function onChange (state) {
+    console.log('mapped', state)
+    assert.deepEqual(state, { foo: 'hello', woo: 'woo' })
+})
+
+fooStore.setFoo('hello')
+
 

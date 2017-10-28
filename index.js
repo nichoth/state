@@ -57,6 +57,16 @@ Store.Merge = function (stores) {
     return newStore
 }
 
+Store.map = function (predicate, store) {
+    var newStore = Store()
+    newStore._state = store._state
+    store.state(function onChange (state) {
+        newStore._state = predicate(state)
+        newStore.publish()
+    })
+    return newStore
+}
+
 Store.extend = function (obj, _super) {
     obj = obj || {}
     _super = _super || Store
