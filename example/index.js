@@ -2,7 +2,7 @@ var Store = require('../')
 var assert = require('assert')
 
 // you need to implement _state
-// this is deep cloned whenever we instantiate FooStore
+// _state is deep cloned whenever we instantiate a new FooStore
 var FooStore = Store.extend({
     _state: { foo: 'foo' },
 
@@ -28,8 +28,9 @@ fooStore.setFoo('bar')
 
 // unsubscribe
 stopListening()
-fooStore.state(state => assert.equal(state.foo, 'baz'))
+var stop = fooStore.state(state => assert.equal(state.foo, 'baz'))
 fooStore.setFoo('baz')
+stop()
 
 
 // _state can be a function that returns initial state
@@ -47,4 +48,22 @@ var BarStore = Store.extend({
 var barStore = BarStore('baz')
 assert.equal(barStore.state().bar, 'baz')
 
+
+// -------- merge -------------
+
+// emit a change event whenever one of the children changes
+var merged = Store.Merge({
+    foo: fooStore,
+    bar: barStore
+})
+
+merged.state(function onChange (state) {
+    console.log('merged', state)
+    assert.deepEqual(state, {
+        foo: { foo: 'aaaaa' },
+        bar: { bar: 'baz' }
+    })
+})
+
+fooStore.setFoo('aaaaa')
 
