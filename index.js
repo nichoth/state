@@ -58,6 +58,10 @@ Store.Merge = function (stores) {
 }
 
 Store.map = function (predicate, store) {
+    if (!store) return function (_store) {
+        return Store.map(predicate, _store)
+    }
+
     var newStore = Store()
     newStore._state = store._state
     store.state(function onChange (state) {
