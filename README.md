@@ -1,5 +1,7 @@
 # state
 
+State container
+
 ## example
 
 ```js
@@ -12,6 +14,7 @@ var assert = require('assert')
 var FooStore = Store.extend({
     _state: { foo: 'foo' },
 
+    // **all methods should be synchronous**
     setFoo: function (value) {
         this._state.foo = value
         return this.publish()
@@ -39,7 +42,7 @@ fooStore.setFoo('baz')
 stop()
 
 
-// _state can be a function that returns initial state
+// `_state` can be a function that returns initial state
 var BarStore = Store.extend({
     _state: function (init) {
         return { bar: init }
