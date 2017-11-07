@@ -1,8 +1,8 @@
 var Bus = require('nanobus')
-var CHANGE_EVENT = '_change'
 var deepExtend = require('deep-extend')
 var inherits = require('inherits')
 var mxtend = require('xtend/mutable')
+var CHANGE_EVENT = '_change'
 
 function Store (args) {
     if (!(this instanceof Store)) return new Store(args)

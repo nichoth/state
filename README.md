@@ -1,8 +1,15 @@
-# state
+# old school mutable state
 
-State container
+Abstract state container
+
+## install 
+
+    $ npm install @nichoth/state
+
 
 ## example
+
+### inherit from this module
 
 ```js
 var Store = require('../')
@@ -10,7 +17,8 @@ var xtend = require('xtend')
 var assert = require('assert')
 
 // you need to implement _state
-// _state is deep cloned whenever we instantiate a new FooStore
+// if _state is an object, it is deep cloned whenever we instantiate a
+// new FooStore
 var FooStore = Store.extend({
     _state: { foo: 'foo' },
 
@@ -56,9 +64,14 @@ var BarStore = Store.extend({
 
 var barStore = BarStore('baz')
 assert.equal(barStore.state().bar, 'baz')
+```
 
+### State.Merge
 
-// -------- merge -------------
+Compose multiple state machines, and get change events whenever one of
+them changes
+
+```js
 
 // emit a change event whenever one of the children changes
 var merged = Store.Merge({
@@ -77,10 +90,14 @@ var unlisten = merged.state(function onChange (state) {
 fooStore.setFoo('aaaaa')
 
 unlisten()
+```
 
+### State.map
 
-// -------- map -------------
+Take an existing store and return a new store that is mapped
+by a predicate function
 
+```js
 var mapped = Store.map(function (state) {
     return xtend(state, {
         woo: 'woo'
@@ -93,5 +110,6 @@ mapped.state(function onChange (state) {
 })
 
 fooStore.setFoo('hello')
-
 ```
+
+
