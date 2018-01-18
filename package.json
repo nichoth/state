@@ -9,7 +9,7 @@
   },
   "scripts": {
     "preversion": "npm run lint && npm test",
-    "postversion": "git push && git push --tags",
+    "postversion": "git push && git push --tags && npm publish",
     "lint": "eslint .",
     "test": "node example/index.js && node example/list.js"
   },
