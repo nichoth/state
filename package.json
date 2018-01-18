@@ -1,6 +1,6 @@
 {
   "name": "@nichoth/state",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Abstract state container",
   "main": "index.js",
   "directories": {
