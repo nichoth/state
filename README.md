@@ -136,7 +136,7 @@ assert.deepEqual(foos.state(), {
 })
 ```
 
-#### list.get(array)
+#### list.get(array) => list
 
 Set this store's list of sorted data
 ```js
@@ -153,7 +153,7 @@ assert.deepEqual(foos.state(), {
 })
 ```
 
-#### list.add(object)
+#### list.add(object) => list
 
 Add an element in the correct sorted position
 ```js
@@ -161,7 +161,7 @@ foos.add({ id: 3, hello: 'bar' })
 assert.equal(foos.state().sorted[0].hello, 'bar')
 ```
 
-#### list.edit(object)
+#### list.edit(object) => list
 
 Lookup an object by id, and update the given properties
 ```js
@@ -170,7 +170,7 @@ assert.equal(foos.state().sorted[0].hello, 'baz')
 assert.equal(foos.state().data['3'].hello, 'baz')
 ```
 
-#### list.delete(object)
+#### list.delete(object) => list
 
 Lookup an object by id and delete it from the store
 ```js
