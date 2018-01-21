@@ -85,5 +85,6 @@ mapped.state(function onChange (state) {
 })
 
 fooStore.setFoo('hello')
+assert.deepEqual(mapped.state(), { foo: 'hello', woo: 'woo' })
 
 

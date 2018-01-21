@@ -68,6 +68,10 @@ Store.map = function (predicate, store) {
         newStore._state = predicate(state)
         newStore.publish()
     })
+    newStore.state = function (listener) {
+        if (!listener) return predicate(newStore._state)
+        return Store.prototype.state.apply(newStore, arguments)
+    }
     return newStore
 }
 
