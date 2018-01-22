@@ -64,7 +64,7 @@ mxtend(ListStore.prototype, {
     }
 })
 
-ListStore.containes = function (store, item) {
+ListStore.contains = function (store, item) {
     return !!store._state.data[item[store.idKey]]
 }
 
