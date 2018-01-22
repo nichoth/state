@@ -68,5 +68,9 @@ ListStore.contains = function (store, item) {
     return !!store._state.data[item[store.idKey]]
 }
 
+ListStore.extend = function (opts) {
+    return Store.extend(opts, ListStore)
+}
+
 module.exports = ListStore
 

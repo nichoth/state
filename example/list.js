@@ -1,11 +1,10 @@
-var Store = require('../')
 var ListStore = require('../list')
 var assert = require('assert')
 
-var Foos = Store.extend({
+var Foos = ListStore.extend({
     idKey: 'id',
     sortBy: 'hello',
-}, ListStore)
+})
 
 var foos = Foos()
 
