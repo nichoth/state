@@ -38,6 +38,7 @@ mxtend(ListStore.prototype, {
     },
 
     edit: function (newData) {
+        if (!this._state.data[newData[this.idKey]]) return this
         mxtend(this._state.data[newData[this.idKey]], newData)
         return this.publish()
     },
