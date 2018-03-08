@@ -18,10 +18,10 @@
     "eslint-config-minlint": "^2.0.0"
   },
   "dependencies": {
+    "@nichoth/events": "^0.6.5",
     "deep-extend": "^0.5.0",
     "inherits": "^2.0.3",
     "lodash": "^4.17.4",
-    "nanobus": "^4.2.0",
     "xtend": "^4.0.1"
   },
   "repository": {

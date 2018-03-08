@@ -1,6 +1,6 @@
 var mxtend = require('xtend/mutable')
-var Store = require('./')
 var inherits = require('inherits')
+var Store = require('./')
 var _ = {
     sortedLastIndexBy: require('lodash/sortedLastIndexBy'),
     remove: function remove (list, item) {

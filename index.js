@@ -1,4 +1,4 @@
-var Bus = require('nanobus')
+var Bus = require('@nichoth/events')
 var deepExtend = require('deep-extend')
 var inherits = require('inherits')
 var mxtend = require('xtend/mutable')
