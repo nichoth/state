@@ -2,6 +2,12 @@
 
 Abstract state container
 
+This package provides minimal prototypes for creating state machines that model data. The core is `index.js`, a class with 2 methods for subscribing to changes and publishing updates. All children inherit from this.
+
+We use sorted lists of objects so frequently that `list.js` is included here, which has methods for basic crud operations.
+
+There are several utility functions also -- `extend`, a helper for inheriting from this, `Merge`, which composes multiple state machines, and `map`.
+
 ## install 
 
     $ npm install @nichoth/state
