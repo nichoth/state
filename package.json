@@ -10,7 +10,7 @@
     "preversion": "npm run lint && npm test",
     "postversion": "git push && git push --tags && npm publish",
     "lint": "eslint .",
-    "test": "node example/index.js && node example/list.js"
+    "test": "node example/index.js && node example/list.js && node example/struct.js"
   },
   "devDependencies": {
     "eslint": "^4.10.0",
