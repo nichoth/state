@@ -2,7 +2,7 @@
 
 Abstract state container
 
-This package provides minimal prototypes for creating state machines that model data. The core is `index.js`, a class with 2 methods for subscribing to changes and publishing updates. All children inherit from this.
+This package provides minimal prototypes for creating state machines. The core is `index.js`, a class with 2 methods for subscribing to changes and publishing updates. All children inherit from this.
 
 We use sorted lists of objects so frequently that `list.js` is included here, which has methods for basic crud operations.
 
@@ -118,9 +118,30 @@ mapped.state(function onChange (state) {
 fooStore.setFoo('hello')
 ```
 
-### List
+### struct
+A simple observable object with one method, `.set`.
 
+```js
+var Struct = require('@nichoth/state/struct')
+var assert = require('assert')
+
+var myState = Struct({
+    hello: 'world',
+    foo: 'bar'
+})
+
+// do a shallow merge
+myState.set({ hello: 'ok' })
+
+assert.deepEqual(myState.state(), {
+    hello: 'ok',
+    foo: 'bar'
+})
+```
+
+### List
 A sorted list of objects
+
 ```js
 var Store = require('../')
 var ListStore = require('../list')

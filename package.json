@@ -4,8 +4,7 @@
   "description": "Abstract state container",
   "main": "index.js",
   "directories": {
-    "example": "example",
-    "test": "test"
+    "example": "example"
   },
   "scripts": {
     "preversion": "npm run lint && npm test",
