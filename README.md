@@ -4,9 +4,11 @@ Abstract state container
 
 This package provides minimal prototypes for creating state machines. The core is `index.js`, a class with 2 methods for subscribing to changes and publishing updates. All children inherit from this.
 
-We use sorted lists of objects so frequently that `list.js` is included here, which has methods for basic crud operations.
+Sorted lists are also included here in `list.js`, which has methods for basic crud operations.
 
-There are several utility functions also -- `extend`, a helper for inheriting from this, `Merge`, which composes multiple state machines, and `map`.
+`struct.js` is a simple observable object.
+
+There are several utility functions also -- `extend`, a helper for inheriting, `Merge`, which composes multiple state machines, and `map`.
 
 ## install 
 
@@ -25,6 +27,8 @@ var assert = require('assert')
 // you need to implement _state
 // if _state is an object, it is deep cloned whenever we instantiate a
 // new FooStore
+// _state can also be a function that returns a new object. It will
+// be called during construction
 var FooStore = Store.extend({
     _state: { foo: 'foo' },
 
@@ -78,7 +82,6 @@ Compose multiple state machines, and get change events whenever one of
 them changes
 
 ```js
-
 // emit a change event whenever one of the children changes
 var merged = Store.Merge({
     foo: fooStore,
